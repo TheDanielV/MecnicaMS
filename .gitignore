@@ -1,4 +1,34 @@
-# created by virtualenv automatically
+# Ignorar archivos y directorios del entorno virtual
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-/Lib/
-.idea
+# Ignorar archivos compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar la carpeta Lib
+Lib/
+
+# Ignorar archivos de configuración de PyCharm/IntelliJ IDEA
+.idea/
+
+# Ignorar archivos de configuración del entorno
+*.env
+*.env.*
+
+# Ignorar archivos de log
+*.log
+
+# Ignorar archivos de bases de datos locales
+*.sqlite3
+
+# Ignorar archivos específicos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos y carpetas de desarrollo local
+.vscode/
