@@ -3,6 +3,7 @@
 from sqlalchemy import Column, Integer, String
 from app.db.database import Base
 
+
 # Se crea el modelo paara un usuario
 class User(Base):
     __tablename__ = "user"

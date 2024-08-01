@@ -1,6 +1,7 @@
 from app.db.database import Base, engine
 import app.models.domain.user  # Asegúrate de importar los modelos aquí
 
+
 # Se inicia labase de datos y de ser el caso crea la tabla
 def init_db():
     print("Creando tablas en la base de datos...")
