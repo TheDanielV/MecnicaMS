@@ -1,5 +1,5 @@
 # MecanicaMs/app/crud/user.py
-
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 from app.models.domain.user import User
 from app.models.schema.user import UserCreate
@@ -14,10 +14,14 @@ def create_user(db: Session, usuario: UserCreate):
         direction=usuario.direction
 
     )
-    db.add(db_usuario)
-    db.commit()
-    db.refresh(db_usuario)
-    return db_usuario
+    try:
+        db.add(db_usuario)
+        db.commit()
+        db.refresh(db_usuario)
+        return {"detail": "Vehiculo creado"}
+    except IntegrityError as ie:
+        db.rollback()
+        return None
 
 
 def get_user_by_ci(db: Session, user_ci: str):
