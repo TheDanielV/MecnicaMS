@@ -9,7 +9,10 @@ def create_user(db: Session, usuario: UserCreate):
     db_usuario = User(
         ci=usuario.ci,
         name=usuario.name,
-        last_name=usuario.last_name
+        last_name=usuario.last_name,
+        cellphone=usuario.cellphone,
+        direction=usuario.direction
+
     )
     db.add(db_usuario)
     db.commit()
