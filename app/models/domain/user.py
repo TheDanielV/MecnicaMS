@@ -8,8 +8,10 @@ from app.db.database import Base
 class User(Base):
     __tablename__ = "user"
     id = Column(Integer, primary_key=True, index=True)
+    ci = Column(String(100), unique=True, index=True)
     name = Column(String(100), index=True)
     last_name = Column(String(100), index=True)
     cellphone = Column(String(100), index=True)
     direction = Column(String(100), index=True)
-    ci = Column(String(100), unique=True, index=True)
+    auth_token = Column(String(100), index=True)
+

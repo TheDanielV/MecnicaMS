@@ -2,23 +2,24 @@
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 from app.models.domain.user import User
-from app.models.schema.user import UserCreate
+from app.models.schema.user import UserCreate, UserResponseMessage
 
 
-def create_user(db: Session, usuario: UserCreate):
+def create_user(db: Session, usuario: UserCreate) -> UserResponseMessage:
     db_usuario = User(
         ci=usuario.ci,
         name=usuario.name,
         last_name=usuario.last_name,
         cellphone=usuario.cellphone,
-        direction=usuario.direction
+        direction=usuario.direction,
+        auth_token=usuario.auth_token
 
     )
     try:
         db.add(db_usuario)
         db.commit()
         db.refresh(db_usuario)
-        return {"detail": "Vehiculo creado"}
+        return UserResponseMessage(detail="Usuario creado")
     except IntegrityError as ie:
         db.rollback()
         return None

@@ -1,13 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app.models.schema.user import UserCreate, UserResponse
+from app.models.schema.user import UserCreate, UserResponse, UserResponseMessage
 from app.crud.user import create_user, get_user_by_ci
 from app.db.session import get_db
 
 router = APIRouter()
 
 
-@router.post("/", response_model=UserResponse)
+@router.post("/", response_model=UserResponseMessage)
 def create_new_usuario(user: UserCreate, db: Session = Depends(get_db)):
     result = create_user(db, user)
     if result is None:
