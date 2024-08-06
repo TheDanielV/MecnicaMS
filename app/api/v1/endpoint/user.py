@@ -11,7 +11,7 @@ router = APIRouter()
 def create_new_usuario(user: UserCreate, db: Session = Depends(get_db)):
     result = create_user(db, user)
     if result is None:
-        raise HTTPException(status_code=404, detail="El usuario ya existe")
+        raise HTTPException(status_code=422, detail="El usuario ya existe")
     return result
 
 
