@@ -23,7 +23,7 @@ def read_user(usuario_ci: str, db: Session = Depends(get_db)):
     return db_usuario
 
 
-@router.get("user_token/{user_token}", response_model=UserResponse)
+@router.get("/user_token/{user_token}", response_model=UserResponse)
 def read_user_by_token(auth_token: str, db: Session = Depends(get_db)):
     db_usuario = get_user_by_token(db, auth_token)
     if db_usuario is None:
