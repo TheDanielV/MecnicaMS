@@ -27,3 +27,7 @@ def create_user(db: Session, usuario: UserCreate) -> UserResponseMessage:
 
 def get_user_by_ci(db: Session, user_ci: str):
     return db.query(User).filter(user_ci == User.ci).first()
+
+
+def get_user_by_token(db: Session, auth_token: str):
+    return db.query(User).filter(auth_token == User.auth_token).first()
