@@ -24,8 +24,8 @@ def read_user(usuario_ci: str, db: Session = Depends(get_db)):
 
 
 @router.get("/user_token/{user_token}", response_model=UserResponse)
-def read_user_by_token(auth_token: str, db: Session = Depends(get_db)):
-    db_usuario = get_user_by_token(db, auth_token)
+def read_user_by_token(user_token: str, db: Session = Depends(get_db)):
+    db_usuario = get_user_by_token(db, user_token)
     if db_usuario is None:
         raise HTTPException(status_code=404, detail="Usuario not found")
     return db_usuario
